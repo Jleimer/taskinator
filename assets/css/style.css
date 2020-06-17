@@ -66,6 +66,7 @@ footer {
   font-size: 2.4rem;
   padding: 20px;
   border-top: 5px solid var(--primary);
+  margin: 30px 0 0 0;
 }
 
 .page-title {
@@ -96,7 +97,7 @@ footer {
 
 .task-list {
   list-style: none;
-  padding: 15px;
+  padding: 15px 15px 100px 15px;
   height: calc(100% - 50px);
   background: rgb(196, 196, 196);
   border-radius: 12px;
@@ -214,6 +215,10 @@ footer {
 .select-status option {
   font-weight: normal;
   font-size: 2rem;
+}
+
+main {
+  display: flex;
 }
 
 @media screen and (max-width: 980px) {
