@@ -54,6 +54,7 @@ for (var i = 0; i < tasks.length; i++) {
     tasks[i].name = taskName;
     tasks[i].type = taskType;
   }
+  saveTasks();
 };
 
 alert("Task Updated!");
@@ -91,6 +92,7 @@ var createTaskEl =function(taskDataObj) {
    taskDataObj.id = taskIdCounter;
    tasks.push(taskDataObj);
    taskIdCounter++;
+   saveTasks();
 }
 
 var createTaskActions = function(taskId) {
@@ -162,6 +164,7 @@ for (var i = 0; i < tasks.length; i++) {
 
 // reassign tasks array to be the same as updatedTaskArr
 tasks = updatedTaskArr;
+saveTasks();
 }
 
 var editTask = function(taskId) {
@@ -208,7 +211,7 @@ for (var i = 0; i < tasks.length; i++) {
     tasks[i].status = statusValue;
   }
 }
-console.log(tasks);
+saveTasks();
  };
 
  var dragTaskHandler = function(event) {
@@ -233,6 +236,7 @@ var dropTaskHandler = function(event) {
   var statusType = dropZoneEl.id;
   // set status of task based on dropZone id
   var statusSelectEl = draggableElement.querySelector("select[name='status-change']");
+  saveTasks();
   if (statusType === "tasks-to-do") {
     statusSelectEl.selectedIndex = 0;
   } 
@@ -251,6 +255,9 @@ var dragLeaveHandler = function(event) {
 if (taskListEl) {
   taskListEl.removeAttribute("style");
 }
+}
+var saveTasks = function() {
+  localStorage.setItem("task", JSON.stringify(tasks));
 }
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
